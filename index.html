@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zenn Graphic — Blue Ocean Creation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+  :root{
+    --ink:#28617e; --ink-soft:#5b8ba5; --ocean:#dff7ff; --sky:#bdeeff;
+    --aqua:#a9f0e9; --white:#faffff; --lav:#e6e5ff; --yellow:#fff1b8;
+    --line:#b5e8f4; --shadow:0 9px 0 #b3e4f1, 0 15px 25px rgba(72,153,184,.12);
+  }
+
+  *{box-sizing:border-box}
+
+  body{
+    margin:0; color:var(--ink); font-family:'Nunito',system-ui,sans-serif;
+    background:
+      radial-gradient(circle at 12% 8%, #fff 0 3px, transparent 4px),
+      radial-gradient(circle at 82% 18%, #fff 0 4px, transparent 5px),
+      linear-gradient(180deg,#eafaff 0%,#d9f6ff 45%,#effcff 100%);
+    background-size:55px 55px,83px 83px,auto;
+  }
+
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1060px,92%);margin:auto}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+  .brand{font-weight:900;letter-spacing:.4px;font-size:1.12rem}
+  .brand small{display:block;font-size:.7rem;letter-spacing:2px;color:var(--ink-soft);font-weight:800}
+  .nav{display:flex;gap:10px;align-items:center;font-size:.85rem;font-weight:800}
+  .nav a{padding:9px 14px;border-radius:999px;background:#ffffffb8;border:1px solid var(--line)}
+  .nav a:hover{background:#fff}
+
+  .hero{
+    position:relative;overflow:hidden;text-align:center;padding:58px 24px 48px;
+    border:2px solid #fff;border-radius:34px;background:linear-gradient(145deg,#faffff 0%,#d6f5ff 55%,#e4fffb 100%);
+    box-shadow:var(--shadow);
+  }
+
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.76rem;font-weight:900;letter-spacing:1.5px}
+  h1{font-size:clamp(2.5rem,7vw,5rem);line-height:.98;margin:20px 0 12px;letter-spacing:-2px}
+  h1 span{color:#62b8d7}
+  .subtitle{font-weight:800;color:var(--ink-soft);letter-spacing:2px;font-size:.88rem}
+  .hero p{max-width:530px;margin:18px auto 25px;line-height:1.7;color:#5b8196}
+
+  .button{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:13px 22px;border-radius:16px;font-weight:900;border:2px solid #fff;
+    background:linear-gradient(180deg,#a9f0e9,#8edee8);
+    box-shadow:0 5px 0 #82cbdc;color:#245d7a;transition:.15s
+  }
+
+  .button:hover{transform:translateY(2px);box-shadow:0 3px 0 #82cbdc}
+  .bubble{position:absolute;border-radius:50%;border:2px solid #fff9;background:#ffffff55}
+  .b1{width:48px;height:48px;left:7%;top:18%}
+  .b2{width:23px;height:23px;right:12%;top:26%}
+  .b3{width:34px;height:34px;right:7%;bottom:15%}
+
+  .section{padding:48px 0 10px}
+  .section-head{text-align:center;margin-bottom:25px}
+  .kicker{font-size:.72rem;font-weight:900;letter-spacing:2px;color:#6ba6bf}
+  h2{font-size:clamp(1.6rem,4vw,2.35rem);margin:7px 0;color:#2b6986}
+  .section-head p{margin:0;color:#6b91a5}
+
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+  .price-card{
+    background:linear-gradient(160deg,#fff,#f1fcff);
+    border:2px solid #fff;border-radius:23px;padding:19px;
+    box-shadow:0 5px 0 #c4eaf4,0 10px 20px #8ac9db24;
+    display:flex;flex-direction:column;gap:13px
+  }
+
+  .card-top{display:flex;align-items:center;gap:11px}
+  .icon-box{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(145deg,#e4fbff,#c7f7f0);font-size:1.35rem;border:1px solid #fff}
+  .card-title{font-weight:900;font-size:1rem}
+  .card-sub{font-size:.72rem;color:#82a7b8;font-weight:800}
+  .price{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px dashed #b9e4ee;font-weight:900}
+  .price strong{font-size:1.08rem;color:#4b9bbd}
+  .price span{font-size:.73rem;color:#8aabba}
+
+  .order-note{
+    margin:30px 0 0;padding:24px;border-radius:25px;
+    background:linear-gradient(135deg,#faffff,#e7faff);
+    border:2px solid #fff;box-shadow:0 5px 0 #c3eaf4
+  }
+
+  .note-title{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.1rem;margin-bottom:14px}
+  .note-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .note-list div{background:#fff9;border:1px solid #d4f0f6;padding:12px 14px;border-radius:14px;font-size:.88rem;font-weight:700}
+
+  .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+  .work{
+    min-height:190px;border:2px solid #fff;border-radius:23px;overflow:hidden;
+    background:linear-gradient(145deg,#c9f5ff,#e9fffc 60%,#e7e6ff);
+    box-shadow:0 5px 0 #c4eaf4;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:18px;position:relative
+  }
+
+  .work img{
+    width:100%;height:100%;object-fit:cover;
+    position:absolute;inset:0;
+    cursor:zoom-in;
+    transition:transform .3s ease;
+  }
+
+  .work-label{position:relative;background:#ffffffd9;border:1px solid #fff;border-radius:16px;padding:13px 16px;font-weight:900}
+  .work-label small{display:block;font-size:.7rem;letter-spacing:1px;color:#79a8bb;margin-top:4px}
+  .portfolio-tip{text-align:center;color:#7297a9;font-size:.78rem;margin:14px 0 0}
+
+  .cta{
+    margin:48px 0 30px;text-align:center;padding:34px 20px;
+    border-radius:28px;background:linear-gradient(135deg,#e7fffc,#d7f5ff);
+    border:2px solid #fff;box-shadow:var(--shadow)
+  }
+
+  .cta h2{margin-top:0}
+  .cta p{color:#7096a8;margin:8px auto 20px}
+  footer{text-align:center;padding:22px 0 30px;color:#83a8b8;font-size:.78rem;font-weight:800}
+
+  .modal{position:fixed;inset:0;background:#235c78aa;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}
+  .modal.show{display:flex}
+  .modal-box{background:#faffff;border:2px solid white;border-radius:24px;padding:25px;max-width:430px;width:100%;box-shadow:0 10px 0 #a5dce9;text-align:center}
+  .modal-box h3{margin-top:0}
+  .modal-box input,.modal-box textarea{width:100%;padding:12px 14px;border:1px solid #bfe7f0;border-radius:13px;margin:7px 0;font:inherit;color:var(--ink);background:#fff}
+  .modal-box textarea{min-height:90px;resize:vertical}
+  .modal-actions{display:flex;gap:10px;justify-content:center;margin-top:12px}
+  .secondary{background:#fff;border:1px solid #bfe7f0;box-shadow:none}
+
+  /* LIGHTBOX - GAMBAR DIPERBESAR */
+  .lightbox{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,40,55,.90);
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    cursor:zoom-out;
+  }
+
+  .lightbox.active{
+    display:flex;
+  }
+
+  .lightbox img{
+    max-width:95%;
+    max-height:90vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:15px;
+    box-shadow:0 10px 40px #0005;
+    cursor:default;
+  }
+
+  @media(max-width:760px){
+    .nav a:not(.order-link){display:none}
+    .price-grid,.portfolio-grid{grid-template-columns:repeat(2,1fr)}
+    .hero{padding:48px 18px 38px}
+  }
+
+  @media(max-width:480px){
+    .price-grid,.portfolio-grid,.note-list{grid-template-columns:1fr}
+    .price-card{padding:16px}
+    .work{min-height:160px}
+    .topbar{padding:16px 0}
+  }
+</style>
+</head>
+
+<body>
+
+<header class="wrap topbar">
+  <a class="brand" href="#home">𓇼 ZENN GRAPHIC <small>BLUE OCEAN CREATION</small></a>
+  <nav class="nav">
+    <a href="#prices">Price List</a>
+    <a href="#results">Results</a>
+    <a class="order-link" href="#order">Order ↗</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="home">
+    <span class="bubble b1"></span>
+    <span class="bubble b2"></span>
+    <span class="bubble b3"></span>
+
+    <div class="eyebrow">𓆝 &nbsp; CREATIVE SERVICE &nbsp; 𓆝</div>
+    <h1>Zenn <span>Graphic</span></h1>
+    <div class="subtitle">BLUE OCEAN CREATION 𓂃 🫧</div>
+    <p>Little ideas, lovely designs. Temukan layanan desain dengan nuansa ocean yang fresh, soft, dan cute untuk kebutuhan kreatifmu.</p>
+    <a class="button" href="#prices">Explore Menu &nbsp; ↓</a>
+  </section>
+
+  <section class="section" id="prices">
+    <div class="section-head">
+      <div class="kicker">𓇼 DESIGN COLLECTION 𓇼</div>
+      <h2>Paid Edit Menu</h2>
+      <p>Pilih layanan desain yang kamu butuhkan.</p>
+    </div>
+
+    <div class="price-grid" id="priceGrid"></div>
+
+    <div class="order-note">
+      <div class="note-title">𓆝 &nbsp; ORDER NOTE 🐬</div>
+      <div class="note-list">
+        <div>⊹ Sertakan detail pesanan dengan jelas.</div>
+        <div>⊹ Boleh menyertakan referensi desain.</div>
+        <div>⊹ Harga menyesuaikan tingkat kesulitan.</div>
+        <div>⊹ Pastikan brief sudah sesuai sebelum order.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="results">
+    <div class="section-head">
+      <div class="kicker">✧ DESIGN GALLERY ✧</div>
+      <h2>Recent Results</h2>
+      <p>Beberapa hasil karya dari Zenn Graphic.
+        Klik untuk perbesar gambar </p>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="work">
+        <img src="image/pict 1.jpeg" alt="Result 1">
+      </div>
+
+      <div class="work">
+        <img src="image/pict2.jpeg" alt="Result 2">
+      </div>
+
+      <div class="work">
+        <img src="image/pict3.jpeg" alt="Result 3">
+      </div>
+
+      <div class="work">
+        <img src="image/pict4.jpeg" alt="Result 4">
+      </div>
+
+      <div class="work">
+        <img src="image/pict5.jpeg" alt="Result 5">
+      </div>
+
+      <div class="work">
+        <img src="image/pict6.jpeg" alt="Result 6">
+      </div>
+
+      <div class="work">
+        <img src="image/pict7.jpeg" alt="Result 7">
+      </div>
+
+    </div>
+
+    <!-- LIGHTBOX GAMBAR -->
+    <div class="lightbox" id="lightbox">
+      <img id="lightboxImg" src="" alt="Preview gambar">
+    </div>
+
+  </section>
+
+  <section class="cta" id="order">
+    <div class="kicker">𓇼 READY TO CREATE? 𓇼</div>
+    <h2>Let's make something cute!</h2>
+    <p>Hubungi Zenn Graphic untuk mulai request desainmu.</p>
+    <button class="button" onclick="openOrder()">Order via WhatsApp &nbsp; 🫧</button>
+  </section>
+
+</main>
+
+<footer>
+  𓇼 Zenn Graphic · Blue Ocean Creation 𓇼<br>
+  Thank you for visiting!
+</footer>
+
+<div class="modal" id="orderModal">
+  <div class="modal-box">
+    <h3>🫧 Create Your Order</h3>
+    <p style="color:#7297a9;font-size:.85rem">Isi brief singkat, lalu lanjutkan melalui WhatsApp.</p>
+
+    <input id="customerName" placeholder="Nama kamu" />
+    <input id="serviceName" placeholder="Layanan (contoh: Logo / Profil)" />
+    <textarea id="brief" placeholder="Tema, warna, teks, detail desain, atau referensi..."></textarea>
+
+    <div class="modal-actions">
+      <button class="button secondary" onclick="closeOrder()">Cancel</button>
+      <button class="button" onclick="sendOrder()">Send ↗</button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+const services = [
+  ["Logo / Profil","3.000 — 6.000","🪼"],
+  ["QR Deco","3.000 — 6.000","🫧"],
+  ["Banner","4.000 — 8.000","🐚"],
+  ["Templat Testi","4.000 — 8.000","💎"],
+  ["WM / Nick Deco","2.000 — 5.000","✨"],
+  ["Presentasi","5.000 — 20.000","🪸"],
+  ["Infografis","5.000 — 15.000","🐬"],
+  ["Poster","5.000 — 15.000","🌊"],
+  ["List","4.000 — 8.000","🫧"]
+];
+
+document.getElementById("priceGrid").innerHTML = services.map(([name,price,icon]) => `
+  <article class="price-card">
+    <div class="card-top">
+      <div class="icon-box">${icon}</div>
+      <div>
+        <div class="card-title">${name}</div>
+        <div class="card-sub">CREATIVE DESIGN SERVICE</div>
+      </div>
+    </div>
+    <div class="price">
+      <span>STARTING RANGE</span>
+      <strong>Rp ${price}</strong>
+    </div>
+  </article>
+`).join("");
+
+function openOrder(){
+  document.getElementById("orderModal").classList.add("show");
+}
+
+function closeOrder(){
+  document.getElementById("orderModal").classList.remove("show");
+}
+
+function sendOrder(){
+  const name = document.getElementById("customerName").value.trim();
+  const service = document.getElementById("serviceName").value.trim();
+  const brief = document.getElementById("brief").value.trim();
+
+  if(!name || !service || !brief){
+    alert("Isi nama, layanan, dan detail pesanan dulu ya.");
+    return;
+  }
+
+  const whatsappNumber = "6283840487919";
+
+  const message = `Halo Zenn Graphic! Aku mau order desain.\n\nNama: ${name}\nLayanan: ${service}\nDetail pesanan: ${brief}\n\nTerima kasih!`;
+
+  window.open(
+    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+}
+
+document.getElementById("orderModal").addEventListener("click",e=>{
+  if(e.target.id==="orderModal") closeOrder();
+});
+
+
+// ===================================
+// LIGHTBOX - KLIK GAMBAR UNTUK BESAR
+// ===================================
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+// Klik gambar untuk memperbesar
+document.querySelectorAll(".work img").forEach(img => {
+  img.addEventListener("click", () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add("active");
+  });
+});
+
+// Klik area gelap untuk menutup gambar
+lightbox.addEventListener("click", () => {
+  lightbox.classList.remove("active");
+  lightboxImg.src = "";
+});
+
+// Tombol ESC untuk menutup gambar
+document.addEventListener("keydown", (e) => {
+  if(e.key === "Escape"){
+    lightbox.classList.remove("active");
+    lightboxImg.src = "";
+  }
+});
+
+</script>
+
+</body>
+</html>
